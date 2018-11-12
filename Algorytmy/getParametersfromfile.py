@@ -3,17 +3,20 @@ from scipy.io import wavfile
 import numpy as np
 import pandas as pd
 
-def ParametersFromFile(filePath, patientStatus):
+def ParametersFromFile(dataDirectory, patientStatus):
+	df2Csv = input('Enter file name:')
+	df2Csv += '.csv'
+	filePath = os.path.join('/home/barti/Documents/voicePathology/voiceDataset/', dataDirectory)
 	Files = os.listdir(filePath)
 	columns = ['RMS', 'mean', 'energy', 'power', 'min', 'max']
 	cases = pd.DataFrame(columns = columns)
 	for fileName in Files:
 		data = returnParameters(filePath, fileName)
 		data = np.reshape(data, (1,len(columns)))
-		df = pd.DataFrame(data = data, index = [fileName], columns = columns)
+		df = pd.DataFrame(data = data, columns = columns)
 		cases = cases.append(df)
 	cases['Status'] = patientStatus
-	cases.to_csv('/home/barti/Documents/voicePathology/Algorytmy/voiceParameters.csv')
+	cases.to_csv(df2Csv, index = False)
 
 def returnParameters(filePath, fileName):
 	audio = wavfile.read(os.path.join(filePath, fileName))[1]
