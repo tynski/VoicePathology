@@ -21,7 +21,7 @@ def parameterstocsv(datadir, patientstatus):
     """
     df2Csv = input('Enter file name to save CSV:') + '.csv'
     allfiles = os.listdir(datadir)
-    columns = ['MEAN', 'MAX', 'MIN', 'RMS', 'ENERGY']
+    columns = ['MEAN', 'MAX', 'MIN', 'ENERGY']
     cases = pd.DataFrame(columns=columns)
     for filename in allfiles:
         filepath = os.path.join(datadir, filename)
@@ -41,6 +41,5 @@ def parameters(signal):
     MEAN = np.mean(signal)
     MAX = np.amax(signal)
     MIN = np.amin(signal)
-    RMS = np.sqrt(np.mean(np.square(signal)))
     ENERGY = np.sum(np.power(signal, 2)) / len(signal)
-    return np.array([MEAN, MAX, MIN, RMS, ENERGY])
+    return np.array([MEAN, MAX, MIN, ENERGY])
