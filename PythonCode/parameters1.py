@@ -8,6 +8,8 @@ import os
 from scipy.io import wavfile
 import numpy as np
 import pandas as pd
+from scipy.stats import kurtosis
+from scipy.stats import skew
 
 
 def parameterstocsv(datadir, patientstatus):
@@ -21,7 +23,11 @@ def parameterstocsv(datadir, patientstatus):
     """
     df2Csv = input('Enter file name to save CSV:') + '.csv'
     allfiles = os.listdir(datadir)
-    columns = ['MEAN', 'MAX', 'MIN', 'ENERGY']
+    columns = ['MAX',
+               'MIN',
+               'RMS',
+               'KURTOSIS',
+               'SKEWNESS']
     cases = pd.DataFrame(columns=columns)
     for filename in allfiles:
         filepath = os.path.join(datadir, filename)
@@ -33,13 +39,10 @@ def parameterstocsv(datadir, patientstatus):
 def returnparametersdf(filepath):
     signal = wavfile.read(filepath)[1]
     if(~(np.isnan(np.sum(signal)))):
-        parametersvect = parameters(signal.tolist())
-        return parametersvect
-
-
-def parameters(signal):
-    MEAN = np.mean(signal)
-    MAX = np.amax(signal)
-    MIN = np.amin(signal)
-    ENERGY = np.sum(np.power(signal, 2)) / len(signal)
-    return np.array([MEAN, MAX, MIN, ENERGY])
+        signal = signal.tolist()
+        MAX = np.amax(signal)
+        MIN = np.amin(signal)
+        RMS = np.sqrt(np.sum(np.power(signal, 2)) / len(signal))
+        KURTOSIS = kurtosis(signal)
+        SKEWNESS = skew(signal)
+        return np.array([MAX, MIN, RMS, KURTOSIS, SKEWNESS])
