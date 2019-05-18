@@ -14,7 +14,7 @@ from scipy.stats import skew
 from scipy.signal import blackmanharris
 
 
-def parameterstocsv(datadir, patientstatus):
+def parameterstocsv(datadir, patientstatus, df2Csv):
     """
     Attributes
     ----------
@@ -28,7 +28,7 @@ def parameterstocsv(datadir, patientstatus):
     Returns csv file with extracted features.
     """
     fulldir = os.path.join(os.getcwd(), datadir)
-    df2Csv = input('Enter file name to save CSV:') + '.csv'
+    df2Csv += '.csv'
     allfiles = os.listdir(fulldir)
     columns = ['MFCC1',
                'MFCC2',
