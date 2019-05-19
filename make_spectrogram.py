@@ -23,13 +23,14 @@ def readAudio(audio):
 import librosa
 import librosa.display
 import numpy as np
+import cv2
 
 def makeSpectogram(amp, fs):
     S = librosa.feature.melspectrogram(y=amp*1.0, sr=fs, n_fft=frame_length, hop_length=overlap, power=2.0)
     sepectogram = librosa.power_to_db(S,ref=np.max)
-    return sepectogram.round(3).tolist()
+    return cv2.resize(sepectogram.round(3),(28,28)).tolist()
 
-datadir = "/home/sywi/Documents/CI/voice_pathology_detection/dataset/test"
+datadir = "/home/sywi/Documents/voicePathology/dataset/test"
 fulldir = os.path.join(os.getcwd(), datadir)
 allfiles = os.listdir(fulldir)
 
@@ -45,6 +46,8 @@ for filename in allfiles:
     
     output['spectogram'] = makeSpectogram(amp, fs) 
 
-    with open(name + '.json', 'w') as outfile:
+    completeName = os.path.join('/home/sywi/Documents/voicePathology/dataset/test1', name + '.json') 
+
+    with open(completeName, 'w') as outfile:
         json.dump(output, outfile)
 
