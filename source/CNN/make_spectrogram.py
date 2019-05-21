@@ -30,12 +30,12 @@ def makeSpectogram(amp, fs):
     sepectogram = librosa.power_to_db(S,ref=np.max)
     return cv2.resize(sepectogram.round(3),(28,28)).tolist()
 
-datadir = "/home/sywi/Documents/voicePathology/dataset/test"
+datadir = "/home/sywi/Documents/voicePathology/source/CNN/dataset/pathology"
 fulldir = os.path.join(os.getcwd(), datadir)
 allfiles = os.listdir(fulldir)
 
 output = {}
-output['status'] = 0
+output['status'] = 1
 
 import json
 
@@ -46,7 +46,7 @@ for filename in allfiles:
     
     output['spectogram'] = makeSpectogram(amp, fs) 
 
-    completeName = os.path.join('/home/sywi/Documents/voicePathology/dataset/test1', name + '.json') 
+    completeName = os.path.join('/home/sywi/Documents/voicePathology/source/CNN/dataset/data/', name + '.json') 
 
     with open(completeName, 'w') as outfile:
         json.dump(output, outfile)
