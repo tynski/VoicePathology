@@ -85,7 +85,7 @@ model.compile(optimizer=sgd,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=100, validation_data=(val_data,val_labels))
 
 
 # # Test model
