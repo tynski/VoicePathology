@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import tensorflow as tf
 
-from tensorflow.keras import datasets, layers, models
+from tensorflow.keras import datasets, layers, models, optimizers
 print(tf.__version__)
 
 
@@ -79,8 +79,9 @@ model.summary()
 
 
 # # Train model
+sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
-model.compile(optimizer='adam',
+model.compile(optimizer=sgd,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
