@@ -13,7 +13,7 @@ import numpy as np
 import os
 from random import shuffle
 
-datadir = '/home/sywi/Documents/voicePathology/source/CNN/data'
+datadir = 'source/CNN/data/'
 fulldir = os.path.join(os.getcwd(), datadir)
 allfiles = os.listdir(fulldir)
 
@@ -21,7 +21,7 @@ dataset = []
 
 for filename in allfiles:
     filepath = os.path.join(datadir, filename)
-    name = '/home/sywi/Documents/voicePathology/source/CNN/data/' + filename.split(".")[0]
+    name = 'source/CNN/data/' + filename.split(".")[0]
 
     with open(name + '.json', 'r') as file:
         person = json.load(file)
