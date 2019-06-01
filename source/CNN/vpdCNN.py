@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import tensorflow as tf
 
-from tensorflow.keras import datasets, layers, models
+from tensorflow.keras import datasets, layers, models, optimizers
 print(tf.__version__)
 
 
@@ -13,7 +13,7 @@ import numpy as np
 import os
 from random import shuffle
 
-datadir = '/home/sywi/Documents/voicePathology/source/CNN/data'
+datadir = 'source/CNN/data/'
 fulldir = os.path.join(os.getcwd(), datadir)
 allfiles = os.listdir(fulldir)
 
@@ -21,7 +21,7 @@ dataset = []
 
 for filename in allfiles:
     filepath = os.path.join(datadir, filename)
-    name = '/home/sywi/Documents/voicePathology/source/CNN/data/' + filename.split(".")[0]
+    name = 'source/CNN/data/' + filename.split(".")[0]
 
     with open(name + '.json', 'r') as file:
         person = json.load(file)
@@ -79,12 +79,13 @@ model.summary()
 
 
 # # Train model
+sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
-model.compile(optimizer='adam',
+model.compile(optimizer=sgd,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=100, validation_data=(val_data,val_labels))
 
 
 # # Test model
