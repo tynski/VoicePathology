@@ -55,15 +55,13 @@ train_data.shape
 # # Convolutional base
 
 model = models.Sequential()
-model.add(layers.Conv2D(16, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(layers.Conv2D(16, (3, 3), activation='relu'))
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.Conv2D(32, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Dropout(0.25))
 
-model.add(layers.Conv2D(32, (3, 3), activation='relu'))
-model.add(layers.Conv2D(32, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Dropout(0.25))
 
 model.summary()
 
@@ -71,21 +69,19 @@ model.summary()
 # # Dense layer at the top
 
 model.add(layers.Flatten())
-model.add(layers.Dense(32, activation='relu'))
-model.add(layers.Dropout(0.5))
+model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(2, activation='sigmoid'))
-
 model.summary()
 
 
 # # Train model
 sgd = optimizers.SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 
-model.compile(optimizer=sgd,
+model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=50, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data,val_labels))
 
 
 # # Test model
