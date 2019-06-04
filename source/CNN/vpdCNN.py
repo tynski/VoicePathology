@@ -75,7 +75,7 @@ model.summary()
 
 
 # # Train model
-sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.0, nesterov=True)
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
