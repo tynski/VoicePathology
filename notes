@@ -1,0 +1,36 @@
+If you know that your problem falls into an “AI-complete” category like object
+recognition, speech recognition, machine translation, and so on, then you are likely
+to do well by beginning with an appropriate deep learning model.
+
+Is it "AI-complete" model?
+
+If the input has known topological structure (for example, if the input is an image), use a convolutional
+network.
+
+How does one decide whether to gather more data? First, determine whether
+the performance on the training set is acceptable. If performance on the training
+set is poor, the learning algorithm is not using the training data that is already
+available, so there is no reason to gather more data. Instead, try increasing the
+size of the model by adding more layers or adding more hidden units to each layer.
+Also, try improving the learning algorithm, for example by tuning the learning
+rate hyperparameter. If large models and carefully tuned optimization algorithms
+do not work well, then the problem might be the quality of the training data. The
+data may be too noisy or may not include the right inputs needed to predict the
+desired outputs. This suggests starting over, collecting cleaner data, or collecting
+a richer set of features.
+
+If test set performance is much worse than training set performance, then gathering more data is one of the most eﬀective
+solutions.
+
+
+
+"""
+transferlearning
+esitamotrs tf
+keras
+
+Dropout is it not working. Probably beacuse there is too little data and there is not need to regularize.
+
+Higher learning rate.
+visualise the layers.
+"""

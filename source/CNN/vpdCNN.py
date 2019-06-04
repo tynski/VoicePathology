@@ -75,13 +75,13 @@ model.summary()
 
 
 # # Train model
-sgd = optimizers.SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=10, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=20, validation_data=(val_data,val_labels))
 
 
 # # Test model
