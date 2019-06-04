@@ -56,10 +56,8 @@ train_data.shape
 
 model = models.Sequential()
 model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(layers.Conv2D(32, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
 
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
 
@@ -75,9 +73,9 @@ model.summary()
 
 
 # # Train model
-sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.0, nesterov=True)
+sgd = optimizers.SGD(lr=0.001, decay=0.0, momentum=0.0, nesterov=False)
 
-model.compile(optimizer='adam',
+model.compile(optimizer='adamax',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
