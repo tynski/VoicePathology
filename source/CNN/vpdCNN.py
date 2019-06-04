@@ -46,8 +46,8 @@ print('X shape: ', X.shape, 'y shape: ', y.shape)
 
 from sklearn.model_selection import train_test_split
 
-train_data, test_data, train_labels, test_labels = train_test_split(X, y, test_size=0.2, random_state=1)
-train_data, val_data, train_labels, val_labels = train_test_split(train_data, train_labels, test_size=0.2, random_state=1)
+train_data, test_data, train_labels, test_labels = train_test_split(X, y, test_size=0.2, random_state=42)
+#train_data, val_data, train_labels, val_labels = train_test_split(train_data, train_labels, test_size=0.2, random_state=1)
 
 train_data.shape
 
@@ -78,7 +78,7 @@ model.summary()
 
 
 # # Train model
-adamax = optimizers.Adamax(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
+adamax = optimizers.Adamax(lr=0.004, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
 adagrad = optimizers.Adagrad(lr=0.01, epsilon=None, decay=0.0)
 rmsprop = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
 
@@ -86,7 +86,7 @@ model.compile(optimizer=adamax,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=30, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=40)#, validation_data=(val_data,val_labels))
 
 
 # # Test model
@@ -99,7 +99,7 @@ import matplotlib.pyplot as plt
 
 f = plt.figure(figsize=(10,6))
 plt.plot(history.history["loss"], label="train loss")
-plt.plot(history.history["val_loss"], label="val_loss")
+#plt.plot(history.history["val_loss"], label="val_loss")
 plt.xlabel('epoch', fontsize=14)
 plt.ylabel('loss', fontsize=14)
 plt.title('loss history', fontsize=14)
