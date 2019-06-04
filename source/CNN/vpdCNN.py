@@ -38,7 +38,7 @@ for person in dataset:
 X = np.array(X)
 y = np.array(y)
 
-X = X.reshape((1372, 28, 28, 1))
+X = X.reshape((1372, 64, 64, 1))
 print('X shape: ', X.shape, 'y shape: ', y.shape)
 
 
@@ -55,11 +55,14 @@ train_data.shape
 # # Convolutional base
 
 model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.Conv2D(16, (3, 3), activation='relu', input_shape=(64, 64, 1)))
 model.add(layers.MaxPooling2D((2, 2)))
 
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(32, (3, 3), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Conv2D(64, (3,3), activation='relu'))
+model.add(layers.MaxPooling2D((2,2)))
 
 model.summary()
 
