@@ -28,14 +28,14 @@ import cv2
 def makeSpectogram(amp, fs):
     S = librosa.feature.melspectrogram(y=amp*1.0, sr=fs, n_fft=frame_length, hop_length=overlap, power=2.0)
     sepectogram = librosa.power_to_db(S,ref=np.max)
-    return cv2.resize(sepectogram.round(3),(28,28)).tolist()
+    return cv2.resize(sepectogram.round(3),(64,64)).tolist()
 
-datadir = "/home/sywi/Documents/voicePathology/source/CNN/dataset/pathology"
+datadir = "/home/sywi/Documents/voicePathology/source/CNN/dataset/healthy"
 fulldir = os.path.join(os.getcwd(), datadir)
 allfiles = os.listdir(fulldir)
 
 output = {}
-output['status'] = 1
+output['status'] = 0
 
 import json
 
@@ -46,7 +46,7 @@ for filename in allfiles:
     
     output['spectogram'] = makeSpectogram(amp, fs) 
 
-    completeName = os.path.join('/home/sywi/Documents/voicePathology/source/CNN/dataset/data/', name + '.json') 
+    completeName = os.path.join('/home/sywi/Documents/voicePathology/source/CNN/data/', name + '.json') 
 
     with open(completeName, 'w') as outfile:
         json.dump(output, outfile)
