@@ -81,12 +81,13 @@ model.summary()
 adamax = optimizers.Adamax(lr=0.004, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
 adagrad = optimizers.Adagrad(lr=0.01, epsilon=None, decay=0.0)
 rmsprop = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
+adam = optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 
 model.compile(optimizer=adamax,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=40)#, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=100)#, validation_data=(val_data,val_labels))
 
 
 # # Test model
