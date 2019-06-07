@@ -68,6 +68,7 @@ model.summary()
 
 model.add(layers.Flatten())
 model.add(layers.Dense(32, activation='relu'))
+model.add(layers.Dropout(0.1))
 model.add(layers.Dense(2, activation='sigmoid', activity_regularizer=regularizers.l1(0.01)))
 
 # # Train model

@@ -11,3 +11,4 @@ Test accuracy = 0.6872727, Difference between test_acc and train_acc: 0.01737630
 Test accuracy = 0.72, Difference between test_acc and train_acc: 0.054840446.
 Test accuracy = 0.70181817, Difference between test_acc and train_acc: 0.09945804.
 Test accuracy = 0.7381818, Difference between test_acc and train_acc: 0.02754289.
+Test accuracy = 0.75272727, Difference between test_acc and train_acc: 0.034875274.
