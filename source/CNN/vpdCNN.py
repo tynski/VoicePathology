@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import tensorflow as tf
 
-from tensorflow.keras import datasets, layers, models, optimizers
+from tensorflow.keras import datasets, layers, models, optimizers, regularizers
 print(tf.__version__)
 
 
@@ -68,7 +68,7 @@ model.summary()
 
 model.add(layers.Flatten())
 model.add(layers.Dense(32, activation='relu'))
-model.add(layers.Dense(2, activation='sigmoid'))
+model.add(layers.Dense(2, activation='sigmoid', activity_regularizer=regularizers.l1(0.01)))
 
 # # Train model
 rmsprop = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.99)
@@ -80,7 +80,7 @@ model.compile(optimizer=adam,
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(train_data, train_labels, epochs=20)#, validation_data=(val_data,val_labels))
+history = model.fit(train_data, train_labels, epochs=40)#, validation_data=(val_data,val_labels))
 
 
 # # Test model
