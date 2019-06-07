@@ -31,6 +31,11 @@ keras
 
 Dropout is it not working. Probably beacuse there is too little data and there is not need to regularize.
 
+Best filter size is 3X3.
+one filter one max pooling.
+2 Conv layers.
+one FC layer.
+
 Higher learning rate.
 visualise the layers.
 """
