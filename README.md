@@ -11,3 +11,4 @@ Responisiblities
 TODO
 * documentation / README
 * restructurize project architecture
+* run check if jupyter notebooks are working
