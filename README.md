@@ -5,23 +5,23 @@ Responisiblities:
 * Built machine learning project pipeline: data analysis, features creation, model preparation, validation 
 
 ## Classic machine learning aproach
-I used ML for detect healthy and ill patients. Actually  I used two algorithms logistic regression and random forest with overall accuracy ~70%. I think the problem is signal processing due to get features, so I try different approach and test CNN in action.
-
-accuracy = 0.7163636
+I used ML for detect healthy and ill patients. Actually  I used two algorithms logistic regression and random forest with overall accuracy ~70%.
 
 ## CNN
+Convolutional neural network utlized to classified patients based on extracted spectograms, overall accuracy ~70%.
+
 
 ## Installation
 Just clone the repository. Required dependencies are given in **requirements.txt** file:
 
 `pip install -r requirements.txt`
 
-## Usage
-The whole workflow is presented in Jupyter Notebooks:
-* [classic machine learnig](voice_pathology/classicML/classification.ipynb) `voice_pathology/classicML/classification.ipynb`
-* [CNN](voice_pathology/CNN/Classification.ipynb) `voice_pathology/CNN/Classification.ipynb`
+## Classifiaction
+The classification workflow is presented in Jupyter Notebooks:
+* [classic machine learnig](voice_pathology/classic_ml/classification.ipynb) `voice_pathology/classic_ml/classification.ipynb`
+* [CNN](voice_pathology/cnn/classification.ipynb) `voice_pathology/cnn/classification.ipynb`
 
-## TODO
-* documentation / README
-* restructurize project architecture
-* run check if jupyter notebooks are working
+## Dataset
+Classification is based on [Saarbruecken Voice Database](http://www.stimmdatenbank.coli.uni-saarland.de/help_en.php4) a collection of voice recordings from more than 2000 persons. There are two Jupyter Notebooks presenting data preparation:
+* [classic machine learnig](voice_pathology/classic_ml/audio_analysis.ipynb) `voice_pathology/classic_ml/audio_analysis.ipynb`
+* [CNN](voice_pathology/cnn/audio_analysis.ipynb) `voice_pathology/cnn/audio_analysis.ipynb`
