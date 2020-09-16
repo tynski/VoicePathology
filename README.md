@@ -1,15 +1,10 @@
 # Voice pathology detection
-This is my bachelor thesis project. Voice pathology detection is a patient condition diagnostics system based on Machine Learning algorithms. Vanilla version was based on logistic regression and random forest, though when I discovered CNN's and computer vision I thought it would be nice to test a deep learning approach. To conclude the project contains approaches to voice pathology detection problem.
+This is my bachelor thesis project. Voice pathology detection is a patient condition diagnostics system based on Machine Learning algorithms. Vanilla version was based on logistic regression and random forest, though when I discovered CNN's and computer vision I thought it would be nice to test a deep learning approach. To conclude the project contains approaches to voice pathology detection problem:
+* Classic machine learning approach, two algorithms logistic regression and random forest with overall accuracy ~70%,
+* Convolutional neural network utilized to classified patients based on extracted spectrograms, overall accuracy ~70%.
 
 Responsibilities:
 * Built machine learning project pipeline: data analysis, features creation, model preparation, validation 
-
-## Classic machine learning approach
-I used ML to detect healthy and ill patients. Actually, I used two algorithms logistic regression and random forest with overall accuracy ~70%.
-
-## CNN
-Convolutional neural network utilized to classified patients based on extracted spectrograms, overall accuracy ~70%.
-
 
 ## Installation
 Just clone the repository. Required dependencies are given in **requirements.txt** file:
