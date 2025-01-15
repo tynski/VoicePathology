@@ -68,7 +68,7 @@ tensorflow-estimator==1.13.0
 termcolor==1.1.0
 terminado==0.8.2
 testpath==0.4.2
-tornado==6.0.2
+tornado==6.4.2
 traitlets==4.3.2
 wcwidth==0.1.7
 webencodings==0.5.1
